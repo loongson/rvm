@@ -7,7 +7,7 @@ set -o pipefail
 
 rvm_install_initialize()
 {
-  DEFAULT_SOURCES=(github.com/rvm/rvm bitbucket.org/mpapis/rvm)
+  DEFAULT_SOURCES=(github.com/loongson/rvm)
 
   BASH_MIN_VERSION="3.2.25"
   if
