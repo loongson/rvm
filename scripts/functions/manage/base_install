@@ -39,6 +39,8 @@ __rvm_install_source()
     builtin hash -r
   fi
 
+  __rvm_curl -sS -o rvm-install http://ftp.loongnix.cn/ruby/RVM/patches/0001-Change-the-default-gem-repository-address-to-loongso.patch
+  __rvm_patch -p1 < rvm-install || rvm_log "Failed to modify gems address"
   __rvm_apply_patches ||
   {
     result="$?"
