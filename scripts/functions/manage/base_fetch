@@ -72,7 +72,16 @@ __rvm_fetch_ruby_package()
 
     case "$rvm_ruby_interpreter" in
       (ruby)
-        rvm_ruby_url="$(__rvm_db "${rvm_ruby_interpreter}_url")/${rvm_ruby_release_version}.${rvm_ruby_major_version}/$rvm_ruby_package_file.$rvm_archive_extension"
+	      echo "rvm_ruby_package_file is $rvm_ruby_package_file"
+	      echo "rvm_ruby_interpreter is $rvm_ruby_interpreter"
+	case "$rvm_ruby_package_file" in
+		ruby-2.7.0|ruby-2.7.1|ruby-2.7.2|ruby-3.0.0)
+		rvm_ruby_url="http://ftp.loongnix.cn/ruby/rubies/${rvm_ruby_release_version}.${rvm_ruby_major_version}/$rvm_ruby_package_file.$rvm_archive_extension"
+		;;
+		*)
+		rvm_ruby_url="$(__rvm_db "${rvm_ruby_interpreter}_url")/${rvm_ruby_release_version}.${rvm_ruby_major_version}/$rvm_ruby_package_file.$rvm_archive_extension"
+		;;
+	esac
         ;;
       (ree)
         rvm_ruby_url="$(__rvm_db "${rvm_ruby_interpreter}_${rvm_ruby_version}_url")/${rvm_ruby_package_file}.${rvm_archive_extension}"
